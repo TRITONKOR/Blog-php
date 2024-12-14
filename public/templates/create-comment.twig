@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+</head>
+<body>
+{% if session.user is null %}
+    <p>You need to <a href="/login">log in</a> to create a comment.</p>
+    <a href="/">Back to posts</a>
+{% else %}
+
+    <h1>Create a new comment</h1>
+    <form method="POST" action="/comments">
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" required></textarea><br>
+
+        <label for="post_id">Post_id:</label>
+        <input id="post_id" type="text" name="post_id" value="">
+
+        <br>
+
+        <button type="submit">Create Comment</button>
+    </form>
+
+{% endif %}
+</body>
+</html>

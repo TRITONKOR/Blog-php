@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Posts</title>
+</head>
+<body>
+<h1>All Posts</h1>
+
+{% if posts is empty %}
+    <p>No posts available.</p>
+{% else %}
+    <ul>
+        {% for post in posts %}
+            <li>
+                <h2>{{ post.title }}</h2>
+                <h3><strong>ID: </strong> {{ post.id }}</h3>
+                <p><strong>Author:</strong> {{ post.user.username }}</p>
+                <p><strong>Content:</strong> {{ post.content }}</p>
+                <p><strong>Tags:</strong> {{ post.tags | map(tag => tag.name) | join(', ') }}</p>
+                <p><strong>Published on:</strong> {{ post.createdAt | date('Y-m-d H:i') }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+</body>
+</html>
